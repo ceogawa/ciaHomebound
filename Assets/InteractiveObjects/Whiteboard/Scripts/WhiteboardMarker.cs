@@ -27,6 +27,7 @@ public class WhiteboardMarker : MonoBehaviour
         // TODO modify if circular marker is desired
         _colors = Enumerable.Repeat(_renderer.material.color, _penSize * _penSize).ToArray();
         _tipHeight = _tip.localScale.y;
+        //_lastTouchRot = 
         // TODO check, init whiteboard
         _whiteboard = null;
     }
@@ -73,7 +74,7 @@ public class WhiteboardMarker : MonoBehaviour
                     }
 
                     // need to lock rotation of the pen at impact
-                    transform.rotation = _lastTouchRot;
+                    //transform.rotation = _lastTouchRot;
                     
                     // apply
                     _whiteboard.texture.Apply();
@@ -81,7 +82,7 @@ public class WhiteboardMarker : MonoBehaviour
 
                 // update vals
                 _lastTouchPos = new Vector2(x, y);
-                _lastTouchRot = transform.rotation;
+                //_lastTouchRot = transform.rotation;
                 _touchedLastFrame = true;
                 return;
             }
