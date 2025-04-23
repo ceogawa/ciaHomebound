@@ -18,8 +18,12 @@ MonoBehaviour:
   m_PlatformId: b9b35072a6f44c2e863f17467ea3dc13
   m_PlatformBuildProfile:
     rid: 2426784010255466497
-  m_OverrideGlobalSceneList: 0
-  m_Scenes: []
+  m_OverrideGlobalSceneList: 1
+  m_Scenes:
+  - m_enabled: 1
+    m_path: Assets/Bedroom.unity
+  - m_enabled: 0
+    m_path: Assets/Scenes/BasicScene.unity
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
     m_Settings:
@@ -30,7 +34,7 @@ MonoBehaviour:
     - line: '|   AndroidProfiler: 0'
     - line: '|   AndroidFilterTouchesWhenObscured: 0'
     - line: '|   AndroidEnableSustainedPerformanceMode: 0'
-    - line: '|   defaultScreenOrientation: 4'
+    - line: '|   defaultScreenOrientation: 3'
     - line: '|   targetDevice: 2'
     - line: '|   useOnDemandResources: 0'
     - line: '|   accelerometerFrequency: 60'
@@ -166,10 +170,8 @@ MonoBehaviour:
     - line: '|   bundleVersion: 0.1'
     - line: '|   preloadedAssets:'
     - line: '|   - {instanceID: 0}'
-    - line: '|   - {fileID: -8196854396901781169, guid: 1a4c68ca72a83449f938d669337cb305,
-        type: 2}'
-    - line: '|   - {fileID: -96246732860517567, guid: a9a6963505ddf7f4d886008c6dc86122,
-        type: 2}'
+    - line: '|   - {fileID: 11400000, guid: 5dfa8d961a6f24f0dbc1abaf4ba6fa96, type:
+        2}'
     - line: '|   metroInputSource: 0'
     - line: '|   wsaTransparentSwapchain: 0'
     - line: '|   m_HolographicPauseOnTrackingLoss: 1'
@@ -1057,7 +1059,7 @@ MonoBehaviour:
         m_ExportAsGoogleAndroidProject: 0
         m_DebugSymbolLevel: 1
         m_DebugSymbolFormat: 5
-        m_CurrentDeploymentTargetId: __builtin__target_default
+        m_CurrentDeploymentTargetId: 1WMHH865HY1365
         m_BuildType: 2
         m_BuildAppBundle: 0
         m_IPAddressToConnect: 
