@@ -1,6 +1,15 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<<< HEAD:Assets/Materials.meta
+guid: 5c5bd5ff8b90c84469c0d33d6acf3236
+folderAsset: yes
+========
+guid: d9edad988c793413bbf1d1f2f7184211
+>>>>>>>> 03b4c86034b6a9ec09dac7703929f063a3aacc86:Assets/Bedroom.unity.meta
+=======
 guid: 7e1573deac0ac4f489f1ca27113a3398
 folderAsset: yes
+>>>>>>> 03b4c86034b6a9ec09dac7703929f063a3aacc86
 DefaultImporter:
   externalObjects: {}
   userData: 
