@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit;
+
 
 public class WhiteboardMarker : MonoBehaviour
 {
-   
+    public InputActionProperty drawButton;
+    //[SerializeField] private Button drawButton;
     [SerializeField] private Transform _tip;
     [SerializeField] private int _penSize = 5;
 
@@ -17,8 +21,8 @@ public class WhiteboardMarker : MonoBehaviour
     private Vector2 _touchPos, _lastTouchPos;
     private bool _touchedLastFrame;
     private Quaternion _lastTouchRot;
-
     private Whiteboard _whiteboard;
+
 
     void Start()
     {
@@ -27,7 +31,6 @@ public class WhiteboardMarker : MonoBehaviour
         // TODO modify if circular marker is desired
         _colors = Enumerable.Repeat(_renderer.material.color, _penSize * _penSize).ToArray();
         _tipHeight = _tip.localScale.y;
-        //_lastTouchRot = 
         // TODO check, init whiteboard
         _whiteboard = null;
     }
@@ -40,6 +43,11 @@ public class WhiteboardMarker : MonoBehaviour
 
     private void Draw()
     {
+
+        // if (!drawButton.action.IsPressed()){
+        //     return;
+        // }
+
         if (Physics.Raycast(_tip.position, transform.up, out _touch, _tipHeight))
         {
             // does touch object interact with whiteboard
@@ -65,7 +73,7 @@ public class WhiteboardMarker : MonoBehaviour
                 {
                     _whiteboard.texture.SetPixels(x, y, _penSize, _penSize, _colors);
 
-                    // increment in 0.01 INCREASE THE VAL +=0.01 FOR BETTER FRAME RATE
+                    // increment in 0.01 INCREASE THE VAL +=0.01 FOR BETTER FRAME RATE, decrease for better lerp
                     for (float f = 0.01f; f < 1.00f; f += 0.03f)
                     {
                         var lerpX = (int)Mathf.Lerp(_lastTouchPos.x, x, f);
@@ -74,7 +82,7 @@ public class WhiteboardMarker : MonoBehaviour
                     }
 
                     // need to lock rotation of the pen at impact
-                    //transform.rotation = _lastTouchRot;
+                    transform.rotation = _lastTouchRot;
                     
                     // apply
                     _whiteboard.texture.Apply();
@@ -82,7 +90,7 @@ public class WhiteboardMarker : MonoBehaviour
 
                 // update vals
                 _lastTouchPos = new Vector2(x, y);
-                //_lastTouchRot = transform.rotation;
+                _lastTouchRot = transform.rotation;
                 _touchedLastFrame = true;
                 return;
             }
