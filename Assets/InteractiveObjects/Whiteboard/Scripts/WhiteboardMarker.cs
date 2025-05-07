@@ -16,7 +16,9 @@ public class Crayon : MonoBehaviour
     private Renderer _renderer;
     private Color[] _colors;
     private float _tipHeight;
-    private bool _isTouchingWhiteboard = false;
+    private bool _tipTouchingWhiteboard = false;
+    private Collider _currentWhiteboardCollider = null;
+
     private RaycastHit _touch;
     private Vector2 _touchPos, _lastTouchPos;
     private bool _touchedLastFrame;
@@ -41,27 +43,17 @@ public class Crayon : MonoBehaviour
         Draw();
     }
 
-    private void OnTriggerStay(Collider other)
+    public void SetTipTouching(bool touching, Collider whiteboard)
     {
-        if (other._tip.CompareTag("Whiteboard"))
-        {
-            _isTouchingWhiteboard = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other._tip.CompareTag("Whiteboard"))
-        {
-            _isTouchingWhiteboard = false;
-        }
+        _tipTouchingWhiteboard = touching;
+        _currentWhiteboardCollider = whiteboard;
     }
 
     private void Draw()
     {
 
         //if (Physics.Raycast(_tip.position, transform.up, out _touch, _tipHeight))
-        if (_isTouchingWhiteboard && Physics.Raycast(_tip.position, transform.up, out _touch, _tipHeight))
+        if (_tipTouchingWhiteboard && Physics.Raycast(_tip.position, transform.up, out _touch, _tipHeight))
         {
             // does touch object interact with whiteboard
             if (_touch.transform.CompareTag("Whiteboard"))
