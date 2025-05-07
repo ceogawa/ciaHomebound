@@ -41,17 +41,17 @@ public class Crayon : MonoBehaviour
         Draw();
     }
 
-    void OnCollisionStay(Collision collision)
+    private void OnTriggerStay(Collider other)
     {
-        if (collision.gameObject.CompareTag("Whiteboard"))
+        if (other._tip.CompareTag("Whiteboard"))
         {
             _isTouchingWhiteboard = true;
         }
     }
 
-    void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
-        if (collision.gameObject.CompareTag("Whiteboard"))
+        if (other._tip.CompareTag("Whiteboard"))
         {
             _isTouchingWhiteboard = false;
         }
@@ -61,7 +61,7 @@ public class Crayon : MonoBehaviour
     {
 
         //if (Physics.Raycast(_tip.position, transform.up, out _touch, _tipHeight))
-        if (Physics.Raycast(_tip.position, transform.up, out _touch, _tipHeight))
+        if (_isTouchingWhiteboard && Physics.Raycast(_tip.position, transform.up, out _touch, _tipHeight))
         {
             // does touch object interact with whiteboard
             if (_touch.transform.CompareTag("Whiteboard"))
