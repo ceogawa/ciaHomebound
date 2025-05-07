@@ -493,6 +493,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2143298329846804674, guid: d760ec5420d374d2292c64ef7eae9688, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9396927
+      objectReference: {fileID: 0}
+    - target: {fileID: 2143298329846804674, guid: d760ec5420d374d2292c64ef7eae9688, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2143298329846804674, guid: d760ec5420d374d2292c64ef7eae9688, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2143298329846804674, guid: d760ec5420d374d2292c64ef7eae9688, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.3420201
+      objectReference: {fileID: 0}
+    - target: {fileID: 2143298329846804674, guid: d760ec5420d374d2292c64ef7eae9688, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2143298329846804674, guid: d760ec5420d374d2292c64ef7eae9688, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 3715734503078398487, guid: d760ec5420d374d2292c64ef7eae9688, type: 3}
       propertyPath: m_Name
       value: crayonRed
@@ -505,6 +529,30 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 1f40695c76c8c4fc9b420a6e58df0d43, type: 2}
+    - target: {fileID: 8680285407199212868, guid: d760ec5420d374d2292c64ef7eae9688, type: 3}
+      propertyPath: m_SelectMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8680285407199212868, guid: d760ec5420d374d2292c64ef7eae9688, type: 3}
+      propertyPath: m_Activated.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8680285407199212868, guid: d760ec5420d374d2292c64ef7eae9688, type: 3}
+      propertyPath: m_Activated.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8680285407199212868, guid: d760ec5420d374d2292c64ef7eae9688, type: 3}
+      propertyPath: m_Activated.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8680285407199212868, guid: d760ec5420d374d2292c64ef7eae9688, type: 3}
+      propertyPath: m_Activated.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8680285407199212868, guid: d760ec5420d374d2292c64ef7eae9688, type: 3}
+      propertyPath: m_Activated.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3175,6 +3223,7 @@ GameObject:
   - component: {fileID: 6466380655770818616}
   - component: {fileID: 6163412500541677087}
   - component: {fileID: 5544789525483213163}
+  - component: {fileID: 6466380655770818617}
   m_Layer: 0
   m_Name: pCube31
   m_TagString: Untagged
@@ -7307,7 +7356,7 @@ Transform:
   m_GameObject: {fileID: 1129598629813833639}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.5527136e-17, y: 0, z: 0.002299075}
+  m_LocalPosition: {x: -3.5527136e-17, y: 0, z: 0.00798}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7557,6 +7606,18 @@ PrefabInstance:
     - target: {fileID: 2243020123108092049, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4972139753948832970, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4972139753948832970, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
+      propertyPath: m_InteractionLayers.m_Bits
+      value: 2147483648
+      objectReference: {fileID: 0}
+    - target: {fileID: 5871729695622942206, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7434851320941268098, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
       propertyPath: m_AnchorMax.y
@@ -11745,7 +11806,7 @@ Transform:
   m_GameObject: {fileID: 5058606088383890941}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.008655296, y: 0.029432114, z: -0.11189503}
+  m_LocalPosition: {x: -0.008655296, y: 0.029432114, z: -0.10621409}
   m_LocalScale: {x: 1.41952, y: 0.39845482, z: 0.9009748}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15137,6 +15198,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 543450653415581253}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6466380655770818617
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692138296384794796}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.01, y: 0.01, z: 0.01}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &6474077363041280747
 Transform:
   m_ObjectHideFlags: 0
@@ -18536,7 +18618,7 @@ PrefabInstance:
     - target: {fileID: 3648419598642486429, guid: 4558923ad6f83403f9836cfc8b396eb4, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: d0736a4c0384a4264b4012e0b7af39a7, type: 2}
+      objectReference: {fileID: 2100000, guid: dbde44e86f5b44938ab5d8d59ab5e115, type: 2}
     - target: {fileID: 4028431929616075521, guid: 4558923ad6f83403f9836cfc8b396eb4, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.05274559
