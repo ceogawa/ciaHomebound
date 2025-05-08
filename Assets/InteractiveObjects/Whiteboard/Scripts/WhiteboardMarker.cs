@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
 
 
-public class WhiteboardMarker : MonoBehaviour
+public class Crayon : MonoBehaviour
 {
     public InputActionProperty drawButton;
     //[SerializeField] private Button drawButton;
@@ -16,6 +16,8 @@ public class WhiteboardMarker : MonoBehaviour
     private Renderer _renderer;
     private Color[] _colors;
     private float _tipHeight;
+    private bool _tipTouchingWhiteboard = false;
+    private Collider _currentWhiteboardCollider = null;
 
     private RaycastHit _touch;
     private Vector2 _touchPos, _lastTouchPos;
@@ -41,13 +43,16 @@ public class WhiteboardMarker : MonoBehaviour
         Draw();
     }
 
+    // public void SetTipTouching(bool touching, Collider whiteboard)
+    // {
+    //     _tipTouchingWhiteboard = touching;
+    //     _currentWhiteboardCollider = whiteboard;
+    // }
+
     private void Draw()
     {
 
-        // if (!drawButton.action.IsPressed()){
-        //     return;
-        // }
-
+        //if (Physics.Raycast(_tip.position, transform.up, out _touch, _tipHeight))
         if (Physics.Raycast(_tip.position, transform.up, out _touch, _tipHeight))
         {
             // does touch object interact with whiteboard
