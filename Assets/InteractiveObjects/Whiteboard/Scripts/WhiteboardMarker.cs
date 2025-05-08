@@ -43,17 +43,17 @@ public class Crayon : MonoBehaviour
         Draw();
     }
 
-    public void SetTipTouching(bool touching, Collider whiteboard)
-    {
-        _tipTouchingWhiteboard = touching;
-        _currentWhiteboardCollider = whiteboard;
-    }
+    // public void SetTipTouching(bool touching, Collider whiteboard)
+    // {
+    //     _tipTouchingWhiteboard = touching;
+    //     _currentWhiteboardCollider = whiteboard;
+    // }
 
     private void Draw()
     {
 
         //if (Physics.Raycast(_tip.position, transform.up, out _touch, _tipHeight))
-        if (_tipTouchingWhiteboard && Physics.Raycast(_tip.position, transform.up, out _touch, _tipHeight))
+        if (Physics.Raycast(_tip.position, transform.up, out _touch, _tipHeight))
         {
             // does touch object interact with whiteboard
             if (_touch.transform.CompareTag("Whiteboard"))
