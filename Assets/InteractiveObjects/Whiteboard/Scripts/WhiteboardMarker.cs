@@ -2,107 +2,221 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using UnityEngine.InputSystem;
-using UnityEngine.XR.Interaction.Toolkit;
-
 
 public class Crayon : MonoBehaviour
 {
-    public InputActionProperty drawButton;
-    //[SerializeField] private Button drawButton;
-    [SerializeField] private Transform _tip;
-    [SerializeField] private int _penSize = 5;
-
-    private Renderer _renderer;
-    private Color[] _colors;
-    private float _tipHeight;
-    private bool _tipTouchingWhiteboard = false;
-    private Collider _currentWhiteboardCollider = null;
-
-    private RaycastHit _touch;
-    private Vector2 _touchPos, _lastTouchPos;
-    private bool _touchedLastFrame;
-    private Quaternion _lastTouchRot;
-    private Whiteboard _whiteboard;
-
+    [SerializeField] private Transform tip;
+    [SerializeField] private int penSize = 15;
+    [SerializeField] private bool lockRotationOnContact = true;
+    [SerializeField] private float rotationLockSpeed = 10f;
+    [SerializeField] private float minDrawDistance = 0.001f; // Minimum distance to move before drawing a new point
+    [SerializeField] private int maxPointsPerFrame = 3; // Limit interpolated points per frame
+    
+    private float tipheight;
+    private Renderer tipRenderer;
+    private Color[] colors;
+    private Vector2 lastTexturePos;
+    private bool isDrawing = false;
+    private Whiteboard currentWhiteboard = null;
+    private Vector3 lastTipPosition;
+    private Quaternion lockedRotation;
+    private bool rotationLocked = false;
+    
+    // Performance optimization variables
+    private float lastDrawTime;
+    private const float MIN_DRAW_INTERVAL = 0.01f; // 100 draw operations per second max
+    
+    // Pending line tracking
+    private List<Vector2> pendingPoints = new List<Vector2>();
+    private bool processingLine = false;
 
     void Start()
     {
-        _renderer = _tip.GetComponent<Renderer>();
-        // create a 25 length array of color (5x5 square of pen color) 
-        // TODO modify if circular marker is desired
-        _colors = Enumerable.Repeat(_renderer.material.color, _penSize * _penSize).ToArray();
-        _tipHeight = _tip.localScale.y;
-        // TODO check, init whiteboard
-        _whiteboard = null;
+        // Get the tip renderer
+        tipRenderer = tip.GetComponent<Renderer>();
+        if (tipRenderer == null)
+        {
+            Debug.LogError("Tip needs a renderer component!");
+            return;
+        }
+
+        // Create color array for drawing
+        colors = Enumerable.Repeat(tipRenderer.material.color, penSize * penSize).ToArray();
+
+        tipheight = tip.localScale.y;
+        lastTipPosition = tip.position;
+        lastDrawTime = Time.time;
     }
 
     void Update()
     {
-        // check whiteboard each frame and change texture at that point 
-        Draw();
+        // Handle rotation locking when drawing
+        if (isDrawing && rotationLocked && lockRotationOnContact)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, lockedRotation, Time.deltaTime * rotationLockSpeed);
+        }
+        
+        // Process any pending drawing points
+        if (pendingPoints.Count > 0 && !processingLine && currentWhiteboard != null)
+        {
+            StartCoroutine(ProcessPendingPoints());
+        }
+    }
+    
+    IEnumerator ProcessPendingPoints()
+    {
+        processingLine = true;
+        
+        // Process points in batches to spread the work over frames
+        while (pendingPoints.Count > 1)
+        {
+            Vector2 start = pendingPoints[0];
+            Vector2 end = pendingPoints[1];
+            pendingPoints.RemoveAt(0);
+            
+            int startX = (int)(start.x - (penSize / 2));
+            int startY = (int)(start.y - (penSize / 2));
+            int endX = (int)(end.x - (penSize / 2));
+            int endY = (int)(end.y - (penSize / 2));
+            
+            // Draw directly at end point
+            currentWhiteboard.SetPixels(endX, endY, penSize, colors);
+            
+            for (float f = 0.01f; f < 1.00f; f += 0.01f)
+            {
+                var lerpX = (int)Mathf.Lerp(startX, endX, f);
+                var lerpY = (int)Mathf.Lerp(startY, endY, f);
+                currentWhiteboard.SetPixels(lerpX, lerpY, penSize, colors);
+            }
+
+            // // Limit points for performance
+            // int steps = Mathf.Min(maxPointsPerFrame, Mathf.CeilToInt(Vector2.Distance(start, end) / 5f));
+            
+            // for (int i = 1; i <= steps; i++)
+            // {
+            //     float t = (float)i / (steps + 1);
+            //     int lerpX = (int)Mathf.Lerp(startX, endX, t);
+            //     int lerpY = (int)Mathf.Lerp(startY, endY, t);
+                
+            //     currentWhiteboard.SetPixels(lerpX, lerpY, penSize, colors);
+            // }
+            
+            // Yield to prevent frame drops
+            yield return null;
+        }
+        
+        if (pendingPoints.Count > 0)
+        {
+            // Draw final point
+            Vector2 final = pendingPoints[0];
+            int finalX = (int)(final.x - (penSize / 2));
+            int finalY = (int)(final.y - (penSize / 2));
+            currentWhiteboard.SetPixels(finalX, finalY, penSize, colors, true);
+            pendingPoints.Clear();
+        }
+        
+        processingLine = false;
     }
 
-    // public void SetTipTouching(bool touching, Collider whiteboard)
-    // {
-    //     _tipTouchingWhiteboard = touching;
-    //     _currentWhiteboardCollider = whiteboard;
-    // }
-
-    private void Draw()
+    private void OnTriggerEnter(Collider other)
     {
-
-        //if (Physics.Raycast(_tip.position, transform.up, out _touch, _tipHeight))
-        if (Physics.Raycast(_tip.position, transform.up, out _touch, _tipHeight))
+        // Check if we hit a whiteboard
+        if (!other.CompareTag("Whiteboard")) return;
+        
+        currentWhiteboard = other.GetComponent<Whiteboard>();
+        if (currentWhiteboard == null) return;
+        
+        isDrawing = true;
+        
+        // Lock rotation when first touching
+        if (lockRotationOnContact && !rotationLocked)
         {
-            // does touch object interact with whiteboard
-            if (_touch.transform.CompareTag("Whiteboard"))
+            lockedRotation = transform.rotation;
+            rotationLocked = true;
+        }
+        
+        // Clear pending points and last position
+        pendingPoints.Clear();
+        lastTexturePos = Vector2.zero;
+        
+        // Initial drawing point
+        if (Time.time - lastDrawTime >= MIN_DRAW_INTERVAL)
+        {
+            Vector2 pos = currentWhiteboard.WorldToTexturePosition(tip.position, tip, tipheight);
+            AddDrawingPoint(pos);
+            lastDrawTime = Time.time;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        // Rate limit drawing operations based on time
+        if (Time.time - lastDrawTime < MIN_DRAW_INTERVAL) return;
+        
+        // Continue drawing only if still touching whiteboard
+        if (isDrawing && other.CompareTag("Whiteboard") && 
+            currentWhiteboard != null && other.GetComponent<Whiteboard>() == currentWhiteboard)
+        {
+            Vector3 currentTipPos = tip.position;
+            
+            // Only draw if moved enough to avoid unnecessary updates
+            if (Vector3.Distance(lastTipPosition, currentTipPos) >= minDrawDistance)
             {
-                if (_whiteboard == null)
-                {
-                    // "cache" touch
-                    _whiteboard = _touch.transform.GetComponent<Whiteboard>();
-                }
-
-                _touchPos = new Vector2(_touch.textureCoord.x, _touch.textureCoord.y);
-
-                // determine which pixels are being touched (float -> pixel) 
-                var x = (int)(_touchPos.x * _whiteboard.textureSize.x - (_penSize/2));
-                var y = (int)(_touchPos.y * _whiteboard.textureSize.y - (_penSize/2));
-
-                // top drawing when stop touch
-                if (y < 0 || y > _whiteboard.textureSize.y || x < 0 || x > _whiteboard.textureSize.x) return; 
-
-                // start draw
-                if (_touchedLastFrame)
-                {
-                    _whiteboard.texture.SetPixels(x, y, _penSize, _penSize, _colors);
-
-                    // increment in 0.01 INCREASE THE VAL +=0.01 FOR BETTER FRAME RATE, decrease for better lerp
-                    for (float f = 0.01f; f < 1.00f; f += 0.03f)
-                    {
-                        var lerpX = (int)Mathf.Lerp(_lastTouchPos.x, x, f);
-                        var lerpY = (int)Mathf.Lerp(_lastTouchPos.y, y, f);
-                        _whiteboard.texture.SetPixels(lerpX, lerpY, _penSize, _penSize, _colors);
-                    }
-
-                    // need to lock rotation of the pen at impact
-                    transform.rotation = _lastTouchRot;
-                    
-                    // apply
-                    _whiteboard.texture.Apply();
-                }
-
-                // update vals
-                _lastTouchPos = new Vector2(x, y);
-                _lastTouchRot = transform.rotation;
-                _touchedLastFrame = true;
-                return;
+                //ector3 markerPosition, Transform tip, float tipheight
+                Vector2 pos = currentWhiteboard.WorldToTexturePosition(currentTipPos, tip, tipheight);
+                // Vector2 pos = currentWhiteboard.WorldToTexturePosition(currentTipPos);
+                AddDrawingPoint(pos);
+                
+                lastTipPosition = currentTipPos;
+                lastDrawTime = Time.time;
             }
         }
-        // did not touch whiteboard
-        _whiteboard = null;
-        _touchedLastFrame = false;
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        // Stop drawing when leaving the whiteboard
+        if (other.CompareTag("Whiteboard") && 
+            currentWhiteboard != null && other.GetComponent<Whiteboard>() == currentWhiteboard)
+        {
+            // Process any pending points
+            if (pendingPoints.Count > 0 && !processingLine)
+            {
+                StartCoroutine(ProcessPendingPoints());
+            }
+            
+            isDrawing = false;
+            rotationLocked = false;
+            lastTexturePos = Vector2.zero;
+            
+            // Keep whiteboard reference until pending points are processed
+            if (pendingPoints.Count == 0)
+            {
+                currentWhiteboard = null;
+            }
+        }
+    }
+
+    private void AddDrawingPoint(Vector2 texturePos)
+    {
+        // Skip if out of bounds
+        if (texturePos.x < 0 || texturePos.x >= currentWhiteboard.textureSize.x ||
+            texturePos.y < 0 || texturePos.y >= currentWhiteboard.textureSize.y)
+        {
+            return;
+        }
+            
+        // Add the point to the pending list
+        pendingPoints.Add(texturePos);
+        
+        // If this is the first point, draw it immediately
+        if (pendingPoints.Count == 1 && lastTexturePos == Vector2.zero)
+        {
+            int x = (int)(texturePos.x - (penSize / 2));
+            int y = (int)(texturePos.y - (penSize / 2));
+            currentWhiteboard.SetPixels(x, y, penSize, colors);
+        }
+        
+        lastTexturePos = texturePos;
+    }
 }
