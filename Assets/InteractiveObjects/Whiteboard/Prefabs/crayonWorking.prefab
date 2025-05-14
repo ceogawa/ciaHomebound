@@ -241,12 +241,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0153037645, y: 0.019952504, z: 0.015303768}
-  m_Center: {x: 0.000000031667096, y: -0.000011536295, z: -0.00000006263015}
+  m_Size: {x: 0.02, y: 0.04, z: 0.03}
+  m_Center: {x: 0.000000031667096, y: 0.01, z: -0.00000006263015}
 --- !u!1 &3715734503078398487
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,20 +296,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 853f0209e52e5425c91fab0dc444b512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drawButton:
-    m_UseReference: 0
-    m_Action:
-      m_Name: Draw Button
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: 6351569c-9781-45d3-9f3b-503514d67633
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 0}
-  _tip: {fileID: 3745497920126062834}
-  _penSize: 18
+  tip: {fileID: 3745497920126062834}
+  penSize: 25
+  lockRotationOnContact: 1
+  rotationLockSpeed: 10
+  minDrawDistance: 0.001
+  maxPointsPerFrame: 15
 --- !u!54 &6782984758926553849
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -451,7 +443,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_ThrowVelocityScale: 1.5
+  m_ThrowVelocityScale: 1
   m_ThrowAngularVelocityScale: 1
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
