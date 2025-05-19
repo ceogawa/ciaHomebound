@@ -8911,7 +8911,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcbe4d02776ca45919366fe0c2b3dcc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 2373443986474684215}
 --- !u!1 &2387523324194859974
 GameObject:
   m_ObjectHideFlags: 0
@@ -9533,6 +9532,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 73949512329761232, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2243020122175513880, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -9631,6 +9634,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2243020123108092049, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4399785403807940556, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4972139753948832970, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
@@ -9842,7 +9849,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5518899284880179291, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
@@ -15042,7 +15050,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcbe4d02776ca45919366fe0c2b3dcc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 5091406529802249613}
 --- !u!1 &5120175403930376492
 GameObject:
   m_ObjectHideFlags: 0
@@ -16386,7 +16393,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcbe4d02776ca45919366fe0c2b3dcc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 5776995780444009340}
 --- !u!23 &5799391781423650582
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -17154,7 +17160,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcbe4d02776ca45919366fe0c2b3dcc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 6100761589803542316}
 --- !u!23 &6113240060909347626
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19159,7 +19164,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcbe4d02776ca45919366fe0c2b3dcc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 7043206275758269582}
 --- !u!82 &7043206275758269582
 AudioSource:
   m_ObjectHideFlags: 0
@@ -20538,7 +20542,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcbe4d02776ca45919366fe0c2b3dcc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 7537691478783957146}
 --- !u!4 &7541856586468920122
 Transform:
   m_ObjectHideFlags: 0
@@ -20888,7 +20891,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcbe4d02776ca45919366fe0c2b3dcc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 7694833062081561109}
 --- !u!23 &7699155248088283023
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -23028,7 +23030,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcbe4d02776ca45919366fe0c2b3dcc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 8565962917591399072}
 --- !u!33 &8573137594286719913
 MeshFilter:
   m_ObjectHideFlags: 0

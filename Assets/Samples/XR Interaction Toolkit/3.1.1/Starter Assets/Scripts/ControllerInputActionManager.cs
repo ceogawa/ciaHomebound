@@ -178,14 +178,14 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
             }
 
             var turnAction = GetInputAction(m_Turn);
-            if (turnAction != null)
+            if (false)
             {
                 turnAction.started += OnStartLocomotion;
                 turnAction.canceled += OnStopLocomotion;
             }
 
             var snapTurnAction = GetInputAction(m_SnapTurn);
-            if (snapTurnAction != null)
+            if (false)
             {
                 snapTurnAction.started += OnStartLocomotion;
                 snapTurnAction.canceled += OnStopLocomotion;
