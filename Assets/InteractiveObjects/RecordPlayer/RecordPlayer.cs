@@ -12,7 +12,6 @@ public class RecordPlayer : MonoBehaviour
     }
 
     // Update is called once per frame
-
     void ChangeSong() {
         songIndex = (songIndex + 1) % songs.Length;  // Cycle through the list
         audioSource.clip = songs[songIndex];
@@ -20,7 +19,7 @@ public class RecordPlayer : MonoBehaviour
     }
     void Update()
     {
-        if (!audioSource.isPlaying())
+        if (!audioSource.isPlaying)
         {
             ChangeSong();
         }
