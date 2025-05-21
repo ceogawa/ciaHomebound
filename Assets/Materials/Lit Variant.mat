@@ -23,16 +23,13 @@ Material:
   m_Name: Lit Variant
   m_Shader: {fileID: 10755, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 2100000, guid: 43729c7a8f06e4769ba11eac897f7c18, type: 2}
-  m_ModifiedSerializedProperties: 16
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
-  m_InvalidKeywords:
-  - _FLIPBOOKBLENDING_OFF
-  - _GLOSSINESS_FROM_BASE_ALPHA
-  - _SPECULAR_COLOR
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses:
   - MOTIONVECTORS
@@ -41,10 +38,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Ints: []
-    m_Floats:
-    - _SrcBlend: 1
-    m_Colors:
-    - _BaseColor: {r: 0.8207547, g: 0.034843344, b: 0.034843344, a: 0.5}
-    - _Color: {r: 0.8207547, g: 0.034843344, b: 0.034843344, a: 1}
+    m_Floats: []
+    m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1
