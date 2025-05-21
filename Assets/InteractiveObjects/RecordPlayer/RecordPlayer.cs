@@ -7,13 +7,15 @@ public class RecordPlayer : MonoBehaviour
     private int songIndex = 0;
     void Start()
     {
+        songIndex = Random.Range(0, songs.Length - 1);
         audioSource.clip = songs[songIndex];
         
     }
 
     // Update is called once per frame
     void ChangeSong() {
-        songIndex = (songIndex + 1) % songs.Length;  // Cycle through the list
+        //songIndex = (songIndex + 1) % songs.Length;  // Cycle through the list
+        songIndex = Random.Range(0, songs.Length - 1);
         audioSource.clip = songs[songIndex];
         audioSource.Play();
     }
