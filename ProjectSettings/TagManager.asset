@@ -7,6 +7,7 @@ TagManager:
   - Anchor
   - Whiteboard
   - Mallet
+  - Record
   layers:
   - Default
   - TransparentFX
