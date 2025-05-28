@@ -4264,7 +4264,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 4564843287338978409, guid: 0240e5b8f0f2248d5b9c1d93cd91228c, type: 3}
+  - {fileID: 2100000, guid: 42d3a6908c68b4c938b3df6cf0fd2af8, type: 2}
   - {fileID: 7576386722563338562, guid: 0240e5b8f0f2248d5b9c1d93cd91228c, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -5045,8 +5045,8 @@ Transform:
   m_GameObject: {fileID: 919132147512534665}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.0755735, z: -0, w: 0.9971402}
-  m_LocalPosition: {x: 1.83, y: 1.476, z: -1.805}
-  m_LocalScale: {x: 1.2554493, y: 1.2554493, z: 1.2554493}
+  m_LocalPosition: {x: 1.8297, y: 1.4608, z: -1.8053}
+  m_LocalScale: {x: 1.31094, y: 1.31094, z: 1.31094}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 498924160293359196}
@@ -7287,7 +7287,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
-  m_LightProbeUsage: 0
+  m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
@@ -9341,7 +9341,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
-  m_LightProbeUsage: 0
+  m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
@@ -11787,7 +11787,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
-  m_LightProbeUsage: 0
+  m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
@@ -27706,7 +27706,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
-  m_LightProbeUsage: 0
+  m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
@@ -28522,7 +28522,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
-  m_LightProbeUsage: 0
+  m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
@@ -30239,7 +30239,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
-  m_LightProbeUsage: 0
+  m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
@@ -31055,7 +31055,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
-  m_LightProbeUsage: 0
+  m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
@@ -31387,7 +31387,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
-  m_LightProbeUsage: 0
+  m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
