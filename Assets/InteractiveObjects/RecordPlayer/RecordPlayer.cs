@@ -65,6 +65,7 @@ public class RecordPlayer : MonoBehaviour
     void OnCollisionExit(Collision collision)
     {
         // set playing to false
+        audioSource.Pause();
         playable = true;
         
     }
