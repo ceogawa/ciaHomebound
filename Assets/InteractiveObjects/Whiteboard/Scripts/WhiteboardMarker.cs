@@ -6,11 +6,11 @@ using System.Linq;
 public class Crayon : MonoBehaviour
 {
     [SerializeField] private Transform tip;
-    [SerializeField] private int penSize = 15;
+    [SerializeField] private int penSize = 10;
     [SerializeField] private bool lockRotationOnContact = true;
     [SerializeField] private float rotationLockSpeed = 10f;
     [SerializeField] private float minDrawDistance = 0.001f; // Minimum distance to move before drawing a new point
-    [SerializeField] private int maxPointsPerFrame = 3; // Limit interpolated points per frame
+    [SerializeField] private int maxPointsPerFrame = 5; // Limit interpolated points per frame
     
     private float tipheight;
     private Renderer tipRenderer;
@@ -82,24 +82,24 @@ public class Crayon : MonoBehaviour
             // Draw directly at end point
             currentWhiteboard.SetPixels(endX, endY, penSize, colors);
             
-            for (float f = 0.01f; f < 1.00f; f += 0.01f)
-            {
-                var lerpX = (int)Mathf.Lerp(startX, endX, f);
-                var lerpY = (int)Mathf.Lerp(startY, endY, f);
-                currentWhiteboard.SetPixels(lerpX, lerpY, penSize, colors);
-            }
-
-            // // Limit points for performance
-            // int steps = Mathf.Min(maxPointsPerFrame, Mathf.CeilToInt(Vector2.Distance(start, end) / 5f));
-            
-            // for (int i = 1; i <= steps; i++)
+            // for (float f = 0.01f; f < 1.00f; f += 0.01f)
             // {
-            //     float t = (float)i / (steps + 1);
-            //     int lerpX = (int)Mathf.Lerp(startX, endX, t);
-            //     int lerpY = (int)Mathf.Lerp(startY, endY, t);
-                
+            //     var lerpX = (int)Mathf.Lerp(startX, endX, f);
+            //     var lerpY = (int)Mathf.Lerp(startY, endY, f);
             //     currentWhiteboard.SetPixels(lerpX, lerpY, penSize, colors);
             // }
+
+            // Limit points for performance
+            int steps = Mathf.Min(maxPointsPerFrame, Mathf.CeilToInt(Vector2.Distance(start, end) / 5f));
+            
+            for (int i = 1; i <= steps; i++)
+            {
+                float t = (float)i / (steps + 1);
+                int lerpX = (int)Mathf.Lerp(startX, endX, t);
+                int lerpY = (int)Mathf.Lerp(startY, endY, t);
+                
+                currentWhiteboard.SetPixels(lerpX, lerpY, penSize, colors);
+            }
             
             // Yield to prevent frame drops
             yield return null;
