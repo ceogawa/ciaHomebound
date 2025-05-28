@@ -54,6 +54,19 @@ public class RecordPlayer : MonoBehaviour
                 playable = false;
 
             }
+            else if (otherObject.name == "playableRecord3" && playable == true)
+            {
+                audioSource.clip = songs[2];
+                audioSource.Play();
+                playable = false;
+
+            }
+             else if (otherObject.name == "playableRecord4" && playable == true)
+            {
+                audioSource.clip = songs[3];
+                audioSource.Play();
+                playable = false;
+            }
             // // if (collision.relativeVelocity.magnitude > 2)
             // // if(collision.)
             // audioSource.Play();
