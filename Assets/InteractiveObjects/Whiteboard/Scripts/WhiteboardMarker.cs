@@ -11,7 +11,8 @@ public class Crayon : MonoBehaviour
     [SerializeField] private float rotationLockSpeed = 10f;
     [SerializeField] private float minDrawDistance = 0.001f; // Minimum distance to move before drawing a new point
     [SerializeField] private int maxPointsPerFrame = 5; // Limit interpolated points per frame
-    
+    public AudioSource audioSource;
+    private bool hasPlayed = false;
     private float tipheight;
     private Renderer tipRenderer;
     private Color[] colors;
@@ -46,6 +47,8 @@ public class Crayon : MonoBehaviour
         tipheight = tip.localScale.y;
         lastTipPosition = tip.position;
         lastDrawTime = Time.time;
+
+        audioSource = GetComponentInParent<AudioSource>();
     }
 
     void Update()
@@ -120,8 +123,15 @@ public class Crayon : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+    
         // Check if we hit a whiteboard
         if (!other.CompareTag("Whiteboard")) return;
+
+        // if (!hasPlayed)
+        // {
+        //     audioSource.Play();
+        //     hasPlayed = true;
+        // }
         
         currentWhiteboard = other.GetComponent<Whiteboard>();
         if (currentWhiteboard == null) return;
