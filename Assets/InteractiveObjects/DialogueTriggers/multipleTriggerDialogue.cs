@@ -6,8 +6,7 @@ public class multipleTriggerDialogue : MonoBehaviour
     public UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable grabInteractable;
     private static bool[] hasPlayed = new bool[3];
     public objectType oType;
-    public enum objectType
-    {
+    public enum objectType {
         crayon,
         mallet,
         record

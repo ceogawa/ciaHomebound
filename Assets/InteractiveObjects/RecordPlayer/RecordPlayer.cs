@@ -41,36 +41,14 @@ public class RecordPlayer : MonoBehaviour
 
         if (otherObject.tag == "Record")
         {
-            if (otherObject.name == "playableRecord1" && playable == true)
-            {
-                audioSource.clip = songs[0];
-                audioSource.Play();
-                playable = false;
-            }
-            else if (otherObject.name == "playableRecord2" && playable == true)
-            {
-                audioSource.clip = songs[1];
-                audioSource.Play();
-                playable = false;
+            if (otherObject.name == "record_johnny_cash" && playable == true){ audioSource.clip = songs[0]; }
+            else if (otherObject.name == "record_elvis_dont_be_cruel" && playable == true){ audioSource.clip = songs[1]; }
+            else if (otherObject.name == "record_carl_perkins" && playable == true) { audioSource.clip = songs[2]; }
+            else if (otherObject.name == "record_isley_brothers" && playable == true) { audioSource.clip = songs[3]; }
+            else{ return; }
 
-            }
-            else if (otherObject.name == "playableRecord3" && playable == true)
-            {
-                audioSource.clip = songs[2];
-                audioSource.Play();
-                playable = false;
-
-            }
-             else if (otherObject.name == "playableRecord4" && playable == true)
-            {
-                audioSource.clip = songs[3];
-                audioSource.Play();
-                playable = false;
-            }
-            // // if (collision.relativeVelocity.magnitude > 2)
-            // // if(collision.)
-            // audioSource.Play();
-            Debug.Log("Collided with: " + objectName);
+            audioSource.Play();
+            playable = false;
         }
 
     }
@@ -80,6 +58,5 @@ public class RecordPlayer : MonoBehaviour
         // set playing to false
         audioSource.Pause();
         playable = true;
-        
     }
 }
