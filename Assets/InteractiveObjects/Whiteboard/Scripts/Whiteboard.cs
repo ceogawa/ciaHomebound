@@ -7,7 +7,6 @@ public class Whiteboard : MonoBehaviour
     public Texture2D texture;
     public Vector2 textureSize = new Vector2(2048, 2048);
     [SerializeField] private bool useRealTimeUpdates = false;
-    
     private Renderer rend;
     private Collider boardCollider;
     private bool textureNeedsUpdate = false;
@@ -52,6 +51,7 @@ public class Whiteboard : MonoBehaviour
     // Called by the marker when it has set pixels
     public void SetPixels(int x, int y, int penSize, Color[] colors, bool applyImmediately = false)
     {
+
         if (x < 0 || x + penSize > texture.width || y < 0 || y + penSize > texture.height)
             return;
             
