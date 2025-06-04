@@ -12,7 +12,7 @@ public class Crayon : MonoBehaviour
     [SerializeField] private float minDrawDistance = 0.001f; // Minimum distance to move before drawing a new point
     [SerializeField] private int maxPointsPerFrame = 5; // Limit interpolated points per frame
     public AudioSource audioSource;
-    private bool hasPlayed = false;
+    // private bool hasPlayed = false;
     private float tipheight;
     private Renderer tipRenderer;
     private Color[] colors;
