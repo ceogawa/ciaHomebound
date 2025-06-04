@@ -581,14 +581,14 @@ RectTransform:
   m_GameObject: {fileID: 226729183}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 6.71}
-  m_LocalScale: {x: 0.41410577, y: 0.41410577, z: 0.41410577}
+  m_LocalScale: {x: 0.42507958, y: 0.42507958, z: 0.42507958}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 3.67}
+  m_AnchoredPosition: {x: 0, y: 4.04}
   m_SizeDelta: {x: 25.5979, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &256391882
@@ -635,7 +635,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 256391882}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -657,8 +657,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4278208451
+  m_fontColor: {r: 0.7647059, g: 0.2784314, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1159,7 +1159,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 448256127}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -1195,31 +1195,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 448256130}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1212402847}
-        m_TargetAssemblyTypeName: GameStartMenu, Assembly-CSharp
-        m_MethodName: EnableMainMenu
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1212402847}
-        m_TargetAssemblyTypeName: GameStartMenu, Assembly-CSharp
-        m_MethodName: StartGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &448256130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1227,7 +1203,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 448256127}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -1265,7 +1241,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 448256127}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e419a4d4b65dfb94bae6eddedee04926, type: 3}
   m_Name: 
@@ -3920,8 +3896,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c2d507c3ae9dc744a28e79d568b5806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeOnStart: 1
-  fadeDuration: 2
+  fadeOnStart: 0
+  fadeDuration: 8
   fadeColor: {r: 0, g: 0, b: 0, a: 0}
   fadeCurve:
     serializedVersion: 2

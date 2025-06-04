@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FadeScreen : MonoBehaviour
 {
-    public bool fadeOnStart = true;
+    public bool fadeOnStart = false;
     public float fadeDuration = 2;
     public Color fadeColor;
     public AnimationCurve fadeCurve;
