@@ -126,17 +126,13 @@ public class Crayon : MonoBehaviour
     
         // Check if we hit a whiteboard
         if (!other.CompareTag("Whiteboard")) return;
-
-        // if (!hasPlayed)
-        // {
-        //     audioSource.Play();
-        //     hasPlayed = true;
-        // }
         
         currentWhiteboard = other.GetComponent<Whiteboard>();
         if (currentWhiteboard == null) return;
         
         isDrawing = true;
+
+        // audioSource.Play();
         
         // Lock rotation when first touching
         if (lockRotationOnContact && !rotationLocked)
@@ -186,7 +182,9 @@ public class Crayon : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         // Stop drawing when leaving the whiteboard
-        if (other.CompareTag("Whiteboard") && 
+        // audioSource.Pause();
+
+        if (other.CompareTag("Whiteboard") &&
             currentWhiteboard != null && other.GetComponent<Whiteboard>() == currentWhiteboard)
         {
             // Process any pending points
@@ -194,11 +192,11 @@ public class Crayon : MonoBehaviour
             {
                 StartCoroutine(ProcessPendingPoints());
             }
-            
+
             isDrawing = false;
             rotationLocked = false;
             lastTexturePos = Vector2.zero;
-            
+
             // Keep whiteboard reference until pending points are processed
             if (pendingPoints.Count == 0)
             {

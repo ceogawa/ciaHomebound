@@ -21,6 +21,10 @@ MonoBehaviour:
   m_OverrideGlobalSceneList: 1
   m_Scenes:
   - m_enabled: 1
+    m_path: Assets/1 Start Scene.unity
+  - m_enabled: 0
+    m_path: Assets/2 Bedroom.unity
+  - m_enabled: 1
     m_path: Assets/Bedroom.unity
   - m_enabled: 0
     m_path: Assets/Scenes/BasicScene.unity
