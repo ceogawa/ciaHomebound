@@ -3,6 +3,8 @@ using UnityEngine;
 public class multipleTriggerDialogue : MonoBehaviour
 {
     private AudioSource audioSource;
+    public AudioClip recordDialogue;
+
     public UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable grabInteractable;
     private static bool[] hasPlayed = new bool[3];
     public objectType oType;
@@ -25,6 +27,10 @@ public class multipleTriggerDialogue : MonoBehaviour
     {
         if (!hasPlayed[(int)oType])
         {
+            if (oType == objectType.record)
+            {
+                audioSource.clip = recordDialogue;
+            }
             audioSource.Play();
             hasPlayed[(int)oType] = true;
         }

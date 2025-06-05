@@ -132,7 +132,7 @@ public class Crayon : MonoBehaviour
         
         isDrawing = true;
 
-        audioSource.Play();
+        // audioSource.Play();
         
         // Lock rotation when first touching
         if (lockRotationOnContact && !rotationLocked)
@@ -182,7 +182,7 @@ public class Crayon : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         // Stop drawing when leaving the whiteboard
-        audioSource.Pause();
+        // audioSource.Pause();
 
         if (other.CompareTag("Whiteboard") &&
             currentWhiteboard != null && other.GetComponent<Whiteboard>() == currentWhiteboard)
