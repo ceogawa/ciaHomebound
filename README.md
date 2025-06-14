@@ -1,7 +1,5 @@
-Homebound: 
-Emily Winters
-Ainsley Ward
-Claire Ogawa
+****Homebound:**** <br>
+Emily Winters | Ainsley Ward | Claire Ogawa
 
 
 This project was developed in Unity using an Android build profile using the Oculus Quest 2.
