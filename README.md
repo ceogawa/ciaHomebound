@@ -7,7 +7,8 @@ Claire Ogawa
 This project was developed in Unity using an Android build profile using the Oculus Quest 2.
 (Has not been playtested on other versions of the Quest/other VR headsets)
 
-Abstract: Users will play as a child tasked with unpacking their bedroom after moving. We want 
+**Abstract**: 
+Users will play as a child tasked with unpacking their bedroom after moving. We want 
 to both stimulate memory recall and provide a sense of closure for dementia patients. Rehoming 
 \and moving can be a very scary and intense process for individuals with dementia. We created 
 an environment that dementia patients could call their own. We place players in a childhood 
